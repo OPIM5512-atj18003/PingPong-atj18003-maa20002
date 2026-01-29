@@ -6,6 +6,7 @@ from sklearn.neural_network import MLPRegressor
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import numpy as np
 
 housing = fetch_california_housing(as_frame=True)
 df = housing.frame
@@ -62,3 +63,19 @@ repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 plt.tight_layout()
 plt.savefig(os.path.join(repo_root, "figures", "med_house_val_boxplot.png"))
 plt.close()
+
+# Training Predictions
+y_pred_train = mlp.predict(X_train_scaled)
+
+# Predicted vs Actual Scatter Plot - Training Set
+plt.figure(figsize=(6,6))
+plt.scatter(y_train, y_pred_train, alpha=0.3, s=10)
+lo = min(np.min(y_train), np.min(y_pred_train))
+hi = max(np.max(y_train), np.max(y_pred_train))
+plt.plot([lo, hi], [lo, hi], linewidth=1, color='red')
+plt.xlabel("Actual")
+plt.ylabel("Predicted")
+plt.title("Predicted vs. Actual — Train")
+plt.tight_layout()
+plt.savefig(os.path.join(repo_root, "figures", "predicted_vs_actual_train.png"))
+plt.show()
