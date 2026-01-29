@@ -3,7 +3,6 @@ from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
-import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import numpy as np
@@ -73,11 +72,11 @@ plt.scatter(y_train, y_pred_train, alpha=0.3, s=10)
 lo = min(np.min(y_train), np.min(y_pred_train))
 hi = max(np.max(y_train), np.max(y_pred_train))
 plt.plot([lo, hi], [lo, hi], linewidth=1, color='red')
-plt.xlabel("Actual")
-plt.ylabel("Predicted")
+plt.xlabel("Actual MedHouseVal")
+plt.ylabel("Predicted MedHouseVal")
 plt.title("Predicted vs. Actual — Train")
 plt.tight_layout()
-plt.savefig(os.path.join(repo_root, "figures", "predicted_vs_actual_train.png"))
+plt.savefig(os.path.join(repo_root, "figures", "train_actual_vs_pred.png"))
 plt.close()
 
 # Test Predictions
@@ -89,9 +88,9 @@ plt.scatter(y_test, y_pred_test, alpha=0.3, s=10)
 lo = min(np.min(y_test), np.min(y_pred_test))
 hi = max(np.max(y_test), np.max(y_pred_test))
 plt.plot([lo, hi], [lo, hi], linewidth=1, color='red')
-plt.xlabel("Actual")
-plt.ylabel("Predicted")
+plt.xlabel("Actual MedHouseVal")
+plt.ylabel("Predicted MedHouseVal")
 plt.title("Predicted vs. Actual — Test")
 plt.tight_layout()
-plt.savefig(os.path.join(repo_root, "figures", "predicted_vs_actual_test.png"))
+plt.savefig(os.path.join(repo_root, "figures", "test_actual_vs_pred.png"))
 plt.close()
