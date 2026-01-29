@@ -37,8 +37,8 @@ print("Scaled X_test:", X_test_scaled.shape)
 
 # Train MLP Regressor
 mlp = MLPRegressor(random_state=42,
-                   hidden_layer_sizes=(10,5),
-                   max_iter=200,
+                   hidden_layer_sizes=(50,25),
+                   max_iter=500,
                    batch_size=1000,
                    activation="relu",
                    validation_fraction=0.2,
