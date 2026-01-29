@@ -78,4 +78,20 @@ plt.ylabel("Predicted")
 plt.title("Predicted vs. Actual — Train")
 plt.tight_layout()
 plt.savefig(os.path.join(repo_root, "figures", "predicted_vs_actual_train.png"))
-plt.show()
+plt.close()
+
+# Test Predictions
+y_pred_test = mlp.predict(X_test_scaled)
+
+# Predicted vs Actual Scatter Plot - Test Set
+plt.figure(figsize=(6,6))
+plt.scatter(y_test, y_pred_test, alpha=0.3, s=10)
+lo = min(np.min(y_test), np.min(y_pred_test))
+hi = max(np.max(y_test), np.max(y_pred_test))
+plt.plot([lo, hi], [lo, hi], linewidth=1, color='red')
+plt.xlabel("Actual")
+plt.ylabel("Predicted")
+plt.title("Predicted vs. Actual — Test")
+plt.tight_layout()
+plt.savefig(os.path.join(repo_root, "figures", "predicted_vs_actual_test.png"))
+plt.close()
